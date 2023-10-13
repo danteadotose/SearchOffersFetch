@@ -72,7 +72,7 @@ def search_by_retailer(retailer_name):
         messagebox.showwarning("Warning", "No offers found for this retailer.")
         return
     for related_offer in offer_by_retailer.get(retailer_name, []):
-        related_retailer = classifier(related_offer, retailer_name)
+        related_retailer = classifier(clean(related_offer), clean(retailer_name))
         if related_retailer['scores'][0] > 0.70:
             no_offers = 1
             results_offers.insert(tk.END, f"{related_offer}")
@@ -95,7 +95,7 @@ def search_by_brand(brand_name):
     results_offers.delete(0, tk.END)
     results_scores.delete(0, tk.END)
     for related_offer in offer_by_brand[brand_name]:
-        related_brand = classifier(related_offer, brand_name)
+        related_brand = classifier(clean(related_offer), clean(brand_name))
         if related_brand['scores'][0] > 0.65:
             no_offers = 1
             results_offers.insert(tk.END, f"{related_offer}")
@@ -121,7 +121,7 @@ def search_by_category(category_name):
         if brand_name in offer_by_brand:
             temp_brand.extend(offer_by_brand[brand_name])
     for related_offer in temp_brand:
-        related_category = classifier(related_offer, category_name)
+        related_category = classifier(clean(related_offer), clean(category_name))
         if related_category['scores'][0] > 0.6:
             no_offers = 1
             results_offers.insert(tk.END, f"{related_offer}")
@@ -142,6 +142,12 @@ def random_search(list_uniq_elements, search_function):
     text_widget.delete("1.0", tk.END)
     text_widget.insert(tk.END, f"{random_element}")
     search_function(random_element)
+
+
+def clean(string):
+    if not string:
+        return ""
+    return string[0].upper() + string[1:].lower()
 
 
 # ------------- Data Processing -------------
