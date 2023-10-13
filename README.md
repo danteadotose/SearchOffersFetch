@@ -43,8 +43,6 @@ The threshold value for an offer to be deemed relevant to a category, retailer, 
 Python version = 3.11.5 
 Download the repository and install the required packages
 ```
-python -m venv FetchNLP
-source FetchNLP/bin/activate
 pip install -r requirements.txt
 ```
 Run the following script from the main dir (SearchOffersFetch-main):
