@@ -44,7 +44,7 @@ python -m venv FetchNLP
 source FetchNLP/bin/activate
 pip install -r requirements.txt
 ```
-Run the following script from the main dir (FetchNLP):
+Run the following script from the main dir (SearchOffersFetch-main):
 ```
 python bin/FetchTaskNLP.py
 ```
