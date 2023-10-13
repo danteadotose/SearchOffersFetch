@@ -35,6 +35,9 @@ I treated the problem as a sentence pair classification task. Therefore, a pre-t
 
 I built a simple GUI using the tkinter library, featuring an entry widget for user search queries. To submit their search, users can choose from three buttons: 'Search by Retailer', 'Search by Brand', or 'Search by Category'. For a more spontaneous approach, I've also integrated three 'Random' buttons to retrieve random offers related to either retailers, brands, or categories. After executing a search, results appear in a Listbox widget, accompanied by their scores.
 
+#### Assumptions and tradeoffs:
+
+The threshold value for an offer to be deemed relevant to a category, retailer, or brand is set at 0.60. While this might result in more non-related offers, it's a more cautious choice than raising the threshold and potentially overlooking pertinent offers. Although the pre-trained model can perform multi-label classification—which would allow an offer to be linked to multiple product categories simultaneously—this method proved too computationally intensive and time-consuming, so it was not adopted.
 
 ## Run it locally:
 Python version = 3.11.5 
